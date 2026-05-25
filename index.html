@@ -105,6 +105,7 @@
             margin-bottom: 25px;
         }
 
+        /* Hide Scrollbar but keep scrolling functionality */
         .row::-webkit-scrollbar {
             display: none;
         }
@@ -150,7 +151,7 @@
             color: #fff;
         }
 
-        /* Video Player Modal/Pop-up */
+        /* Premium Modal for Media Pop-ups (Universal for Video & Image) */
         .modal {
             display: none;
             position: fixed;
@@ -162,14 +163,38 @@
             background-color: rgba(0,0,0,0.95);
             justify-content: center;
             align-items: center;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { background-color: rgba(0,0,0,0); }
+            to { background-color: rgba(0,0,0,0.95); }
         }
 
         .modal-content {
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+            animation: scaleUp 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* Special size tuning for mobile/tablet screens */
+        video.modal-content {
             width: 85%;
             max-width: 360px;
             height: auto;
-            border-radius: 8px;
-            outline: none;
+        }
+
+        img.modal-content {
+            object-fit: contain;
+            width: auto;
+            height: auto;
+        }
+
+        @keyframes scaleUp {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
 
         .close-btn {
@@ -180,6 +205,11 @@
             font-size: 40px;
             font-weight: bold;
             cursor: pointer;
+            transition: 0.2s;
+        }
+        
+        .close-btn:hover {
+            color: #E50914;
         }
 
         @media(max-width: 768px) {
@@ -209,21 +239,17 @@
         
         <div class="category-title">Top Picks For You: Gorgeous Outfits</div>
         <div class="row">
-            <div class="card">
+            <div class="card" onclick="openImage('IMG-20260328-WA0000.jpg')">
                 <img src="IMG-20260328-WA0000.jpg" alt="Mehndi Special">
                 <div class="card-title">Mehndi Function Vibes ✨</div>
             </div>
-            <div class="card">
+            <div class="card" onclick="openImage('IMG-20260328-WA0016.jpg')">
                 <img src="IMG-20260328-WA0016.jpg" alt="Wedding Guest Look">
                 <div class="card-title">The Perfect Elegant Look 💜</div>
             </div>
-            <div class="card">
+            <div class="card" onclick="openImage('IMG-20260428-WA0000.jpg')">
                 <img src="IMG-20260428-WA0000.jpg" alt="Cute Thumbs Up">
                 <div class="card-title">Thumbs Up & Cute Smiles 👍❤️</div>
-            </div>
-            <div class="card">
-                <img src="IMG-20260328-WA0000.jpg" alt="Aesthetic Detail">
-                <div class="card-title">Aesthetic White & Flora 🌸</div>
             </div>
         </div>
 
@@ -241,29 +267,42 @@
 
     </div>
 
-    <div id="videoModal" class="modal">
-        <span class="close-btn" onclick="closeVideo()">&times;</span>
-        <video id="moviePlayer" class="modal-content" controls></video>
+    <div id="mediaModal" class="modal">
+        <span class="close-btn" onclick="closeMedia()">&times;</span>
+        <div id="modalBody"></div>
     </div>
 
     <script>
-        function playVideo(videoUrl) {
-            var modal = document.getElementById("videoModal");
-            var player = document.getElementById("moviePlayer");
+        var modal = document.getElementById("mediaModal");
+        var modalBody = document.getElementById("modalBody");
+
+        // Function to Pop-up Images
+        function openImage(imgUrl) {
             modal.style.display = "flex";
-            player.src = videoUrl;
-            player.play();
+            modalBody.innerHTML = '<img src="' + imgUrl + '" class="modal-content">';
         }
 
-        function closeVideo() {
-            var modal = document.getElementById("videoModal");
-            var player = document.getElementById("moviePlayer");
+        // Function to Play Videos
+        function playVideo(videoUrl) {
+            modal.style.display = "flex";
+            modalBody.innerHTML = '<video src="' + videoUrl + '" class="modal-content" controls autoplay></video>';
+        }
+
+        // Universal Close Function
+        function closeMedia() {
             modal.style.display = "none";
-            player.pause();
-            player.src = "";
+            modalBody.innerHTML = ""; // Stops video playback completely
+        }
+
+        // Close on clicking outside the media content
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeMedia();
+            }
         }
     </script>
 
 </body>
 </html>
+
 
