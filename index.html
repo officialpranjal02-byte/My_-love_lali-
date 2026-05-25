@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Love Lai - Our Streaming Memories</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #111;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Premium Header */
+        header {
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+            position: fixed;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .logo {
+            color: #E50914;
+            font-size: 30px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Netflix Style Hero Banner */
+        .hero {
+            height: 75vh;
+            /* Yahan aap apni sabse favourite photo ka direct link dal sakte hain background ke liye */
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), #111), url('PASTE_YOUR_MAIN_HERO_IMAGE_URL_HERE') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 50px;
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            margin-bottom: 12px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.6);
+            font-weight: bold;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 600px;
+            margin-bottom: 25px;
+            color: #e5e5e5;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .play-btn {
+            background-color: #fff;
+            color: #000;
+            border: none;
+            padding: 14px 35px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            width: fit-content;
+            transition: 0.2s ease-in-out;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .play-btn:hover {
+            background-color: rgba(255,255,255,0.75);
+        }
+
+        /* Categories Section */
+        .main-container {
+            padding: 20px 50px;
+            background-color: #111;
+        }
+
+        .category-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #fff;
+            letter-spacing: 0.5px;
+        }
+
+        .row {
+            display: flex;
+            overflow-x: auto;
+            gap: 18px;
+            padding-bottom: 25px;
+            margin-bottom: 25px;
+        }
+
+        /* Hide Scrollbar but keep scrolling functionality */
+        .row::-webkit-scrollbar {
+            display: none;
+        }
+        .row {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Netflix Card Effect */
+        .card {
+            min-width: 260px;
+            height: 150px;
+            background-color: #181818;
+            border-radius: 6px;
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            cursor: pointer;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .card:hover {
+            transform: scale(1.08);
+            z-index: 5;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.95));
+            padding: 12px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #fff;
+        }
+
+        /* Responsive Settings for Mobile */
+        @media(max-width: 768px) {
+            header { padding: 15px 20px; }
+            .hero { padding-left: 20px; height: 55vh; }
+            .hero h1 { font-size: 38px; }
+            .hero p { font-size: 14px; }
+            .main-container { padding: 15px; }
+            .card { min-width: 190px; height: 110px; }
+            .category-title { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">My Love Lai</div>
+    </header>
+
+    <div class="hero">
+        <h1>Our Special Story</h1>
+        <p>A curated collection of your brightest smiles, beautiful outfits, and our unforgettable movie-like moments.</p>
+        <button class="play-btn">▶ Play All Memories</button>
+    </div>
+
+    <div class="main-container">
+        
+        <div class="category-title">Top Picks For You: Gorgeous Outfits</div>
+        <div class="row">
+            <div class="card">
+                <img src="PASTE_MEHNDI_PHOTO_URL" alt="Mehndi Special">
+                <div class="card-title">Mehndi Function Vibes ✨</div>
+            </div>
+            <div class="card">
+                <img src="PASTE_PURPLE_PHOTO_URL" alt="Wedding Guest Look">
+                <div class="card-title">The Perfect Elegant Look 💜</div>
+            </div>
+            <div class="card">
+                <img src="PASTE_GLASSES_PHOTO_URL" alt="Cute Thumbs Up">
+                <div class="card-title">Thumbs Up & Cute Smiles 👍❤️</div>
+            </div>
+            <div class="card">
+                <img src="PASTE_SHIRT_PHOTO_URL" alt="Aesthetic Detail">
+                <div class="card-title">Aesthetic White & Flora 🌸</div>
+            </div>
+        </div>
+
+        <div class="category-title">Binge-Watch: Blockbuster Video Reels</div>
+        <div class="row">
+            <div class="card">
+                <img src="PASTE_VIDEO_1_THUMBNAIL_URL" alt="Outdoor Video Reel">
+                <div class="card-title">Charming Outdoor Walks 🎬</div>
+            </div>
+            <div class="card">
+                <img src="PASTE_VIDEO_2_THUMBNAIL_URL" alt="Aesthetic Filter Video">
+                <div class="card-title">Din-Raat Aesthetic Loop 🎵</div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
