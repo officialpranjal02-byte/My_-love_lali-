@@ -41,7 +41,7 @@
         /* Netflix Style Hero Banner */
         .hero {
             height: 75vh;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.3), #111), url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=1200') no-repeat center center/cover;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4), #111), url('https://raw.githubusercontent.com/officialpranjal02-byte/My_-love_lali-/main/1000045087.jpg') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -150,6 +150,37 @@
             color: #fff;
         }
 
+        /* Video Player Modal/Pop-up */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.95);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            width: 90%;
+            max-width: 400px;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
         @media(max-width: 768px) {
             header { padding: 15px 20px; }
             .hero { padding-left: 20px; height: 55vh; }
@@ -170,7 +201,7 @@
     <div class="hero">
         <h1>Our Special Story</h1>
         <p>A curated collection of your brightest smiles, beautiful outfits, and our unforgettable movie-like moments.</p>
-        <button class="play-btn">▶ Play All Memories</button>
+        <button class="play-btn" onclick="playVideo('https://raw.githubusercontent.com/officialpranjal02-byte/My_-love_lali-/main/1000052397.mp4')">▶ Play All Memories</button>
     </div>
 
     <div class="main-container">
@@ -178,36 +209,59 @@
         <div class="category-title">Top Picks For You: Gorgeous Outfits</div>
         <div class="row">
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=500" alt="Mehndi Special">
+                <img src="https://raw.githubusercontent.com/officialpranjal02-byte/My_-love_lali-/main/1000048364.jpg" alt="Mehndi Special">
                 <div class="card-title">Mehndi Function Vibes ✨</div>
             </div>
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=500" alt="Wedding Guest Look">
+                <img src="https://raw.githubusercontent.com/officialpranjal02-byte/My_-love_lali-/main/1000045087.jpg" alt="Wedding Guest Look">
                 <div class="card-title">The Perfect Elegant Look 💜</div>
             </div>
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=500" alt="Cute Thumbs Up">
+                <img src="https://raw.githubusercontent.com/officialpranjal02-byte/My_-love_lali-/main/1000052378.jpg" alt="Cute Thumbs Up">
                 <div class="card-title">Thumbs Up & Cute Smiles 👍❤️</div>
             </div>
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=500" alt="Aesthetic Detail">
+                <img src="https://raw.githubusercontent.com/officialpranjal02-byte/My_-love_lali-/main/1000049116.jpg" alt="Aesthetic Detail">
                 <div class="card-title">Aesthetic White & Flora 🌸</div>
             </div>
         </div>
 
         <div class="category-title">Binge-Watch: Blockbuster Video Reels</div>
         <div class="row">
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=500" alt="Outdoor Video Reel">
+            <div class="card" onclick="playVideo('https://raw.githubusercontent.com/officialpranjal02-byte/My_-love_lali-/main/1000052397.mp4')">
+                <img src="https://raw.githubusercontent.com/officialpranjal02-byte/My_-love_lali-/main/1000052378.jpg" alt="Outdoor Video Reel">
                 <div class="card-title">Charming Outdoor Walks 🎬</div>
             </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd6a?q=80&w=500" alt="Aesthetic Filter Video">
+            <div class="card" onclick="playVideo('https://raw.githubusercontent.com/officialpranjal02-byte/My_-love_lali-/main/1000052393.mp4')">
+                <img src="https://raw.githubusercontent.com/officialpranjal02-byte/My_-love_lali-/main/1000045087.jpg" alt="Aesthetic Filter Video">
                 <div class="card-title">Din-Raat Aesthetic Loop 🎵</div>
             </div>
         </div>
 
     </div>
+
+    <div id="videoModal" class="modal">
+        <span class="close-btn" onclick="closeVideo()">&times;</span>
+        <video id="moviePlayer" class="modal-content" controls></video>
+    </div>
+
+    <script>
+        function playVideo(videoUrl) {
+            var modal = document.getElementById("videoModal");
+            var player = document.getElementById("moviePlayer");
+            modal.style.display = "flex";
+            player.src = videoUrl;
+            player.play();
+        }
+
+        function closeVideo() {
+            var modal = document.getElementById("videoModal");
+            var player = document.getElementById("moviePlayer");
+            modal.style.display = "none";
+            player.pause();
+            player.src = "";
+        }
+    </script>
 
 </body>
 </html>
